@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Page</title>
+</head>
+<body>
+<h1>Blog Page</h1>
+<h2>Total written blog{{blogs.count|pluralize}} {{blogs.count}}</h2>
+{%for blog in blogs%}
+<a href="{% url 'blog:blog_detail' blog.id %}"><h2>{{blog.title}}</h2></a>
+<p>{{blog.body|striptags|truncatechars:50}}<br>{{blog.date|date:'M d Y'|upper}}</p>
+
+<img src="{{blog.image.url}}">
+{%endfor%}
+</body>
+</html>
